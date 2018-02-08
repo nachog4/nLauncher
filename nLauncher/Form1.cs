@@ -17,6 +17,8 @@ namespace nLauncher
         int picturesHeight = 350;
         int picturesMinHeight = 50;
         int picturesMaxHeight = 500;
+        bool quickMode = true;
+        DbModel model = new DbModel();
 
         public Form1()
         {
@@ -134,7 +136,25 @@ namespace nLauncher
             //Bitmap files2 = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
             string[] files3 = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-            if (files3 != null)
+            if (quickMode && files3 != null)
+            {
+                foreach (var item in files3)
+                {
+                    ShortcutInfo sInfo = new ShortcutInfo();
+                    sInfo = ShortcutsController.GetShortcutInfo(item);
+
+                    if (!sInfo.isError)
+                    {
+                        if (model.AppEntries.Count(x => x.Path == sInfo.Path) > 0) { continue; }
+                        var results = ImagesProvider.googleSearch(sInfo.Name + " cover");
+                        DbController.AddEntry(sInfo.Name, sInfo.Path, results[0].Link);
+                    }
+                }
+
+                ShowAppEntries();
+            } 
+
+            if (!quickMode && files3 != null)
             {
                 ShortcutInfo sInfo = new ShortcutInfo();
                 sInfo = ShortcutsController.GetShortcutInfo(files3[0]);
@@ -149,7 +169,7 @@ namespace nLauncher
             }
         }
 
-                private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }

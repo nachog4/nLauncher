@@ -54,7 +54,13 @@ namespace nLauncher
             }
             else
             {
-
+                AppEntry modifyApp = DbController.GetEntry(Convert.ToInt32(txt_id.Text));
+                modifyApp.Image1 = txt_image1.Text;
+                modifyApp.Name = txt_name.Text;
+                modifyApp.Path = txt_path.Text;
+                DbController.ModifyEntry(modifyApp);
+                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Hide();
+                (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).ShowAppEntries();
             }
         }
 

@@ -42,11 +42,14 @@ namespace nLauncher
 
         public static AppEntry ModifyEntry(AppEntry modifiedEntry)
         {
-            AppEntry entry = model.AppEntries.Single(x => x.Id == modifiedEntry.Id);
-            entry.Image1 = modifiedEntry.Image1;
-            entry.Image2 = modifiedEntry.Image2;
-            entry.Name = modifiedEntry.Name;
-            entry.Path = modifiedEntry.Path;
+            if (!String.IsNullOrEmpty(modifiedEntry.Image1))
+            {
+                var webClient = new WebClient();
+                byte[] imageBytes = webClient.DownloadData(modifiedEntry.Image1);
+                modifiedEntry.Image2 = imageBytes;
+            }
+
+            model.Entry(modifiedEntry).State = System.Data.Entity.EntityState.Modified;
             model.SaveChanges();
 
             return modifiedEntry;
