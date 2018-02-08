@@ -15,6 +15,8 @@ namespace nLauncher
     public partial class Form1 : Form
     {
         int picturesHeight = 350;
+        int picturesMinHeight = 50;
+        int picturesMaxHeight = 500;
 
         public Form1()
         {
@@ -27,11 +29,11 @@ namespace nLauncher
 
             ShowAppEntries();
 
-            OptionsForm options = new OptionsForm();
-            options.Show();
+            //OptionsForm options = new OptionsForm();
+            //options.Show();
 
-            SearchWindow search = new SearchWindow();
-            search.Show();
+            //SearchWindow search = new SearchWindow();
+            //search.Show();
 
         }
 
@@ -69,6 +71,9 @@ namespace nLauncher
         public void ShowEntry_v2(AppEntry appEntry)
         {
             PictureBox pic = new PictureBox();
+            pic.Name = "pb_" + appEntry.Id.ToString();
+
+            if (appEntry.Image2 == null) { return; }
 
             using (var ms = new MemoryStream(appEntry.Image2))
             {
@@ -83,7 +88,26 @@ namespace nLauncher
 
             pic.Cursor = Cursors.Hand;
 
+            pic.Click += Pic_Click;
+
             flowLayoutPanel1.Controls.Add(pic);
+        }
+
+        private void Pic_Click(object sender, EventArgs e)
+        {
+            if (chk_editMode.Checked)
+            {
+                PictureBox tmpPictureBox = (PictureBox)sender;
+                int entryId = Convert.ToInt32(tmpPictureBox.Name.Replace("pb_", ""));
+                AppEntry entry = DbController.GetEntry(entryId);
+                AppEntryDetailsForm entryDetailsForm = new AppEntryDetailsForm();
+                entryDetailsForm.Show();
+                entryDetailsForm.InitializeValuesFromEntry(entry);
+
+            } else
+            {
+
+            }
         }
 
         public void ResizeEntries(int newHeight)
@@ -130,7 +154,10 @@ namespace nLauncher
             e.Effect = DragDropEffects.Move;
         }
 
-
-        
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            int currentValue = trackBar1.Value;
+            ResizeEntries(currentValue * picturesMaxHeight / 50);
+        }
     }
 }

@@ -11,10 +11,10 @@ namespace nLauncher
     {
         public static DbModel model = new DbModel();
 
-        public static void AddEntry (string name, string path, string image1)
+        public static AppEntry AddEntry (string name, string path, string image1)
         {
             AppEntry newEntry = new AppEntry();
-            newEntry.Id = 1;
+            //newEntry.Id = 1;
             newEntry.Name = name;
             newEntry.Path = path;
             newEntry.Image1 = image1;
@@ -24,13 +24,32 @@ namespace nLauncher
                 newEntry.Image2 = imageBytes;
                 }
 
-            model.AppEntries.Add(newEntry);
+            newEntry = model.AppEntries.Add(newEntry);
             model.SaveChanges();
+
+            return newEntry;
         }
 
         public static List<AppEntry> GetEntries ()
         {
             return model.AppEntries.ToList();
+        }
+
+        public static AppEntry GetEntry(int id)
+        {
+            return model.AppEntries.Single(x => x.Id == id);
+        }
+
+        public static AppEntry ModifyEntry(AppEntry modifiedEntry)
+        {
+            AppEntry entry = model.AppEntries.Single(x => x.Id == modifiedEntry.Id);
+            entry.Image1 = modifiedEntry.Image1;
+            entry.Image2 = modifiedEntry.Image2;
+            entry.Name = modifiedEntry.Name;
+            entry.Path = modifiedEntry.Path;
+            model.SaveChanges();
+
+            return modifiedEntry;
         }
 
         public static void DeleteEntries ()

@@ -38,6 +38,7 @@
             this.txt_image1 = new System.Windows.Forms.TextBox();
             this.btn_searchImage = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
+            this.txt_image2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -80,7 +81,8 @@
             // 
             this.txt_id.Location = new System.Drawing.Point(101, 32);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(317, 20);
+            this.txt_id.ReadOnly = true;
+            this.txt_id.Size = new System.Drawing.Size(105, 20);
             this.txt_id.TabIndex = 4;
             // 
             // txt_name
@@ -124,11 +126,19 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // txt_image2
+            // 
+            this.txt_image2.Location = new System.Drawing.Point(101, 194);
+            this.txt_image2.Name = "txt_image2";
+            this.txt_image2.Size = new System.Drawing.Size(317, 20);
+            this.txt_image2.TabIndex = 10;
+            // 
             // AppEntryDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 270);
+            this.Controls.Add(this.txt_image2);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_searchImage);
             this.Controls.Add(this.txt_image1);
@@ -141,6 +151,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AppEntryDetailsForm";
             this.Text = "AppEntryDetailsForm";
+            this.Load += new System.EventHandler(this.AppEntryDetailsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +169,6 @@
         private System.Windows.Forms.TextBox txt_image1;
         private System.Windows.Forms.Button btn_searchImage;
         private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.TextBox txt_image2;
     }
 }

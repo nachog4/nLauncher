@@ -106,6 +106,10 @@
     <Compile Include="Migrations\201802081333145_v2.Designer.cs">
       <DependentUpon>201802081333145_v2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802081437578_v3.cs" />
+    <Compile Include="Migrations\201802081437578_v3.Designer.cs">
+      <DependentUpon>201802081437578_v3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OptionsForm.cs">
       <SubType>Form</SubType>
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802081333145_v2.resx">
       <DependentUpon>201802081333145_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802081437578_v3.resx">
+      <DependentUpon>201802081437578_v3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>

@@ -30,13 +30,16 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.chk_editMode = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -56,12 +59,25 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.chk_editMode);
+            this.panel1.Controls.Add(this.trackBar1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1320, 77);
             this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 45F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(7, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(287, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "nLauncher";
             // 
             // panel2
             // 
@@ -99,16 +115,28 @@
             this.panel5.Size = new System.Drawing.Size(1300, 773);
             this.panel5.TabIndex = 6;
             // 
-            // label1
+            // trackBar1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 45F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(7, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 73);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "nLauncher";
+            this.trackBar1.Location = new System.Drawing.Point(1113, 9);
+            this.trackBar1.Maximum = 50;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(195, 45);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.Value = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // chk_editMode
+            // 
+            this.chk_editMode.AutoSize = true;
+            this.chk_editMode.Checked = true;
+            this.chk_editMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_editMode.Location = new System.Drawing.Point(931, 9);
+            this.chk_editMode.Name = "chk_editMode";
+            this.chk_editMode.Size = new System.Drawing.Size(74, 17);
+            this.chk_editMode.TabIndex = 2;
+            this.chk_editMode.Text = "Edit Mode";
+            this.chk_editMode.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -127,6 +155,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,6 +169,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.CheckBox chk_editMode;
     }
 }
 

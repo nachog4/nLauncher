@@ -1,6 +1,8 @@
 namespace nLauncher
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Linq;
 
@@ -24,6 +26,8 @@ namespace nLauncher
 
     public class AppEntry
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }

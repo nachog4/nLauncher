@@ -19,10 +19,17 @@ namespace nLauncher
 
         public void InitializeValuesFromShortcut(ShortcutInfo sInfo)
         {
-            txt_id.Text = "1";
             txt_name.Text = sInfo.Name;
             txt_path.Text = sInfo.Path;
+        }
 
+        public void InitializeValuesFromEntry(AppEntry entry)
+        {
+            txt_id.Text = entry.Id.ToString();
+            txt_name.Text = entry.Name;
+            txt_path.Text = entry.Path;
+            txt_image1.Text = entry.Image1;
+            if (entry.Image2 != null) { txt_image2.Text = entry.Image2.Length.ToString(); }
         }
 
         private void btn_searchImage_Click(object sender, EventArgs e)
@@ -39,9 +46,21 @@ namespace nLauncher
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            DbController.AddEntry(txt_name.Text, txt_path.Text, txt_image1.Text);
-            (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Hide();
-            (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).ShowAppEntries();
+            if (txt_id.Text == "")
+            {
+                AppEntry newApp = DbController.AddEntry(txt_name.Text, txt_path.Text, txt_image1.Text);
+                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Hide();
+                (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).ShowAppEntries();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void AppEntryDetailsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
