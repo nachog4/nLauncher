@@ -68,8 +68,8 @@ namespace nLauncher
         {
             PictureBox pb = (PictureBox)sender;
             (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setImage1(pb.ImageLocation);
-            (System.Windows.Forms.Application.OpenForms["SearchWindow"] as SearchWindow).Hide();
-            this.Hide();
+            (System.Windows.Forms.Application.OpenForms["SearchWindow"] as SearchWindow).Close();
+            this.Close();
         }
 
         private void btn_search_Click(object sender, EventArgs e)

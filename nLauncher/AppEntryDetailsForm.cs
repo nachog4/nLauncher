@@ -49,7 +49,7 @@ namespace nLauncher
             if (txt_id.Text == "")
             {
                 AppEntry newApp = DbController.AddEntry(txt_name.Text, txt_path.Text, txt_image1.Text);
-                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Hide();
+                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Close();
                 (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).ShowAppEntries();
             }
             else
@@ -59,7 +59,7 @@ namespace nLauncher
                 modifyApp.Name = txt_name.Text;
                 modifyApp.Path = txt_path.Text;
                 DbController.ModifyEntry(modifyApp);
-                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Hide();
+                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).Close();
                 (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).ShowAppEntries();
             }
         }
