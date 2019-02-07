@@ -11,6 +11,7 @@ namespace nLauncher.Migrations
         {
             AutomaticMigrationsEnabled = false;
             ContextKey = "nLauncher.DbModel";
+            AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
         }
 
         protected override void Seed(nLauncher.DbModel context)

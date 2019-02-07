@@ -16,12 +16,14 @@ namespace nLauncher
         // connection string in the application configuration file.
         public DbModel() : base("name=Model1")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DbModel>());
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
          public virtual DbSet<AppEntry> AppEntries { get; set; }
+         public virtual DbSet<Settings> Settings { get; set; }
     }
 
     public class AppEntry
@@ -33,5 +35,12 @@ namespace nLauncher
         public string Path { get; set; }
         public string Image1 { get; set; }
         public Byte[] Image2 { get; set; }
+    }
+
+    public class Settings
+    {
+        public int Id { get; set; }
+        public int OrderType { get; set; }
+        public int ImagesSize { get; set; }
     }
 }

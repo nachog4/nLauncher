@@ -18,7 +18,10 @@ namespace nLauncher
         int picturesMinHeight = 50;
         int picturesMaxHeight = 500;
         bool quickMode = true;
+        int orderType = 1;
+
         DbModel model = new DbModel();
+        Settings userSettings;
 
         public Form1()
         {
@@ -29,7 +32,17 @@ namespace nLauncher
         {
             //DbController.DeleteEntries();
 
-            ShowAppEntries();
+            if (model.Settings.Count() < 1)
+            {
+                model.Settings.Add(new Settings() { Id = 1, OrderType = 1, ImagesSize = 50 });
+                model.SaveChanges();
+            }
+
+            userSettings = model.Settings.Single(x => x.Id == 1);
+            trackBar1.Value = userSettings.ImagesSize;
+            trackBar1_Scroll(null, null);
+
+            ShowAppEntries(1);
 
             //OptionsForm options = new OptionsForm();
             //options.Show();
@@ -37,12 +50,28 @@ namespace nLauncher
             //SearchWindow search = new SearchWindow();
             //search.Show();
 
+
+
+
         }
 
-        public void ShowAppEntries()
+        public void ShowAppEntries(int orderType = 0)
         {
             flowLayoutPanel1.Controls.Clear();
-            foreach (var item in DbController.GetEntries()) { ShowEntry_v2(item); }
+            List<AppEntry> appList = DbController.GetEntries();
+
+            switch (orderType)
+            {
+                case 0: appList = appList.OrderBy(x => x.Name).ToList(); break; //default
+                case 1: appList = appList.OrderBy(x => x.Name).ToList(); break;
+                case 2: appList = appList.OrderBy(x => x.Id).ToList(); break;
+            }
+
+            foreach (var item in appList)
+            {
+                ShowEntry_v2(item);
+            }
+
         }
 
         public void ShowEntry(AppEntry appEntry)
@@ -178,6 +207,10 @@ namespace nLauncher
         {
             int currentValue = trackBar1.Value;
             ResizeEntries(currentValue * picturesMaxHeight / 50);
+            picturesHeight = (int)currentValue * picturesMaxHeight / 50;
+
+            model.Settings.Single(x => x.Id == 1).ImagesSize = currentValue;
+            model.SaveChanges();
         }
     }
 }

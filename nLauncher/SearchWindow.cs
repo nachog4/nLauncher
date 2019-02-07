@@ -27,6 +27,10 @@ namespace nLauncher
 
         public void Search(string query)
         {
+            if (txt_searchtext.Text == "") { txt_searchtext.Text = query; }
+
+            flowLayoutPanel1.Controls.Clear();
+
             var results = ImagesProvider.googleSearch(query);
             foreach (var item in results)
             {
@@ -66,15 +70,28 @@ namespace nLauncher
 
         private void Pic_Click(object sender, EventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-            (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setImage1(pb.ImageLocation);
-            (System.Windows.Forms.Application.OpenForms["SearchWindow"] as SearchWindow).Close();
-            this.Close();
+            MouseEventArgs me = (MouseEventArgs)e;
+
+            if (me.Button == MouseButtons.Right)
+            {
+                ImagePreviewWindow ipw = new ImagePreviewWindow();
+                ipw.Show();
+                PictureBox pb = (PictureBox)sender;
+                ipw.setPreviewPicture(pb.ImageLocation);
+            }
+            else
+            {
+                PictureBox pb = (PictureBox)sender;
+                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setImage1(pb.ImageLocation);
+                (System.Windows.Forms.Application.OpenForms["SearchWindow"] as SearchWindow).Close();
+                this.Close();
+            }
+
         }
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-
+            Search(txt_searchtext.Text);
         }
     }
 }

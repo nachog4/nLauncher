@@ -18,11 +18,22 @@ namespace nLauncher
             newEntry.Name = name;
             newEntry.Path = path;
             newEntry.Image1 = image1;
-            if (!String.IsNullOrEmpty(image1)) {
-                var webClient = new WebClient();
-                byte[] imageBytes = webClient.DownloadData(image1);
-                newEntry.Image2 = imageBytes;
+
+            try
+            {
+                if (!String.IsNullOrEmpty(image1))
+                {
+                    var webClient = new WebClient();
+                    byte[] imageBytes = webClient.DownloadData(image1);
+                    newEntry.Image2 = imageBytes;
                 }
+            }
+            catch (Exception ex)
+            {
+                var webClient = new WebClient();
+                byte[] imageBytes = webClient.DownloadData(" https://image.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg");
+                newEntry.Image2 = imageBytes;
+            }
 
             newEntry = model.AppEntries.Add(newEntry);
             model.SaveChanges();
