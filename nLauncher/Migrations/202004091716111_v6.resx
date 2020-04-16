@@ -117,11 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="play_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\play_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Target" xml:space="preserve">
+    <value>H4sIAAAAAAAEAO1Z227jNhB9L9B/EPTUAlkztl/aQN5F1kmKoLlhlew7LY1tohSlklQQ99f60E/qL3So+822ZCfBYlEECKzhzJkbRzNj//v3P86nl4BbzyAVC8XMHo9ObQuEF/pMrGZ2rJcffrE/ffzxB+fSD16srznf1PChpFAze611dEaI8tYQUDUKmCdDFS71yAsDQv2QTE5PfyXjMQGEsBHLspwvsdAsgOQBH+eh8CDSMeW3oQ9cZXQ8cRNU644GoCLqwcwWNzQWSJW2dc4ZRQNc4EvbokKEmmo07+xJgatlKFZuhATKHzcRIN+ScgWZ2Wcle18PTifGA1IK5lBerHQYDAQcT7OQkKb4QYG1i5Bh0C4xuHpjvE4CN7PPowhpcmNbTWVncy4NYyWuo5z7xCpoJ0Xq8YaYvxNrHnMdS5gJiLWk/MR6iBeceb/D5jH8A8RMxJxXrUK78KxGQNKDDCOQevMFlpmt175tkbocaQoWYhWZ1ItroacT27pD5XTBoUh6xWNXhxJ+AwGSavAfqNYghcGAJGwt7Q1d5n+uDW8Z1olt3dKXGxArvZ7Z+NG2rtgL+Dkls+BJMCwrFNIyhn1K0Kr1myu5DugKxu+jZpKr+cwENRexj5rduHNM3yo0WG/sgOtJAKHWoR6/vhcl+BuEqASfHgvukPKtsvNd44LWmAfV712Tc///runSdS99SEK2T2WPClQu+2sQzu6MY8vWlKFjmY6LRdK6O7KO3ThLvMrqrW5siocXod6sGOAVKi1I2/yo7GRkN0p5DVsY5VGXu4Vj5RBC0ikkn1bIlnHFuaVRZIBLyYxiuensMv/gDu/uQYpBPNXR5AtrC0144zDbjVNUjZZeMan0BdV0QU2y537QYsvTuCW4uZZWppq1VgY9FzGfU7H2pNEULyN3hc4EWCyJX1DYURlpWqLJ1Eg5lR2FOw95HIhtxb9LOm37VfmU0h8h7elVhJTSHyFv2DUvMtpAlEkHymQIStl9qzgltT9Srb1WwWoHh+BNtuEN8rTWRLvxpl14Dmnc4WaNkFaRNFpRs+x6FWXxdjusJLeJ9yjJ7aJvU5KV7lgFqZAHFkXWIluFkdHfOcWthtRkKbQXjanRgJysGexfqlvdIWWxLQzTM/NNZ3A3SkMwMgwj908+5wz9LRluqWBLUDodyGxccCeNBf3bWZaJUj7vuTG/+1TJTFT3zo0DJ8Dq0iqeqfTWVP4U0Jefq0hDF9OjgOrL5/FQxfaESItkxzkIq7lUHmVYx+J4nHUdy+JrAU4PARy+FH4f5dTayxItR29l+1GG7WTtmb/X5rXZuXelnWFm+4sQ7U4tra5sr7GXdek4emtrN0OHVL+Hdi5AsVUJYb6VFuCZLlOC5jzXYhnm+UTLqhblLI1034KmPubhXGq2pJ7GYw+USr6y+kp5jCyXwQL8a3Ef6yjW50pBsOC1Udohu/Unq2ndZuc+Mk/qNVxAMxm6APfic8y4X9h91XFRt0CYK5kVIlrlalOQq02BdBeKnkBZ+C4gAmHK+BGCiCOYuhcufYZDbHtScAMr6m3ymWY7yP5E1MPuXDC6kjRQGUYpb35bIebHlY//AV40tDSOGQAA</value>
   </data>
-  <data name="play_button_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\play_button_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

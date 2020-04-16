@@ -41,9 +41,20 @@ namespace nLauncher
             return newEntry;
         }
 
+        public static void AddEntry (AppEntry newEntry)
+        {
+            model.AppEntries.Add(newEntry);
+            model.SaveChanges();
+        }
+
         public static List<AppEntry> GetEntries ()
         {
             return model.AppEntries.ToList();
+        }
+
+        public static List<AppEntry> GetEntries (string path)
+        {
+            return model.AppEntries.Where(x => x.Path == path).ToList();
         }
 
         public static AppEntry GetEntry(int id)
@@ -53,12 +64,12 @@ namespace nLauncher
 
         public static AppEntry ModifyEntry(AppEntry modifiedEntry)
         {
-            if (!String.IsNullOrEmpty(modifiedEntry.Image1))
-            {
-                var webClient = new WebClient();
-                byte[] imageBytes = webClient.DownloadData(modifiedEntry.Image1);
-                modifiedEntry.Image2 = imageBytes;
-            }
+            //if (!String.IsNullOrEmpty(modifiedEntry.Image1))
+            //{
+            //    var webClient = new WebClient();
+            //    byte[] imageBytes = webClient.DownloadData(modifiedEntry.Image1);
+            //    modifiedEntry.Image2 = imageBytes;
+            //}
 
             model.Entry(modifiedEntry).State = System.Data.Entity.EntityState.Modified;
             model.SaveChanges();
@@ -73,6 +84,12 @@ namespace nLauncher
                 model.AppEntries.Remove(item);
             }
 
+            model.SaveChanges();
+        }
+
+        public static void DeleteEntry(AppEntry entry)
+        {
+            model.AppEntries.Remove(entry);
             model.SaveChanges();
         }
     }

@@ -35,6 +35,10 @@ namespace nLauncher
         public string Path { get; set; }
         public string Image1 { get; set; }
         public Byte[] Image2 { get; set; }
+        public string Category { get; set; }
+        public Byte[] Screenshot1 { get; set; }
+        public Byte[] Screenshot2 { get; set; }
+        public Byte[] Screenshot3 { get; set; }
     }
 
     public class Settings

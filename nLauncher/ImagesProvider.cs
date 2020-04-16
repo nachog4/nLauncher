@@ -14,34 +14,26 @@ namespace nLauncher
             const string searchEngineId = "015210785414118161171:eaqkejpiflg";
 
             var customSearchService = new Google.Apis.Customsearch.v1.CustomsearchService(new Google.Apis.Services.BaseClientService.Initializer { ApiKey = apiKey });
-            var listRequest = customSearchService.Cse.List(query);
+            var listRequest = customSearchService.Cse.List();
             listRequest.Cx = searchEngineId;
-            listRequest.ImgSize = Google.Apis.Customsearch.v1.CseResource.ListRequest.ImgSizeEnum.Large;
+            listRequest.ImgSize = Google.Apis.Customsearch.v1.CseResource.ListRequest.ImgSizeEnum.XXLARGE;
             listRequest.SearchType = Google.Apis.Customsearch.v1.CseResource.ListRequest.SearchTypeEnum.Image;
             listRequest.Safe = Google.Apis.Customsearch.v1.CseResource.ListRequest.SafeEnum.Off;
+            listRequest.Q = query;
 
-            //IList<Google.Apis.Customsearch.v1.Data.Result> paging = new List<Google.Apis.Customsearch.v1.Data.Result>();
             List<Google.Apis.Customsearch.v1.Data.Result> paging = new List<Google.Apis.Customsearch.v1.Data.Result>();
-            var count = 0;
+            
+            try
+            {
+                paging = listRequest.Execute().Items.ToList();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
 
-            paging = listRequest.Execute().Items.ToList();
             return paging;
 
-            while (paging != null)
-            {
-                listRequest.Start = count * 10 + 1;
-                paging = listRequest.Execute().Items.ToList();
-
-                
-                if (paging != null)
-                    foreach (var item in paging)
-                    {
-                        //searchWindow.AddSearchWindowEntry(item.Link);
-                    }
-                count++;
-
-                if (count >= 2) { break; }
-            }
         }
     }
 }

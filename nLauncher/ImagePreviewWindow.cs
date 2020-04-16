@@ -23,5 +23,15 @@ namespace nLauncher
             pictureBox1.Load();
         }
 
+        public void setPreviewPicture(Image image)
+        {
+            pictureBox1.Image = image;
+
+        }
+
+        private void ImagePreviewWindow_Load(object sender, EventArgs e)
+        {
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace nLauncher
     public partial class SearchWindow : Form
     {
         int picturesHeight = 150;
+        string saveTo = "";
 
         public SearchWindow()
         {
@@ -32,11 +33,20 @@ namespace nLauncher
             flowLayoutPanel1.Controls.Clear();
 
             var results = ImagesProvider.googleSearch(query);
-            foreach (var item in results)
+
+            if (results != null)
             {
-                //AddSearchWindowEntry(item.Link);
-                ShowImageResultEntry(item);
+                foreach (var item in results)
+                {
+                    //AddSearchWindowEntry(item.Link);
+                    ShowImageResultEntry(item);
+                }
             }
+        }
+
+        public void setSaveTo (string pSaveTo)
+        {
+            saveTo = pSaveTo;
         }
 
         public void AddSearchWindowEntry(string file)
@@ -82,8 +92,24 @@ namespace nLauncher
             else
             {
                 PictureBox pb = (PictureBox)sender;
-                (System.Windows.Forms.Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setImage1(pb.ImageLocation);
-                (System.Windows.Forms.Application.OpenForms["SearchWindow"] as SearchWindow).Close();
+
+                switch(saveTo)
+                {
+                    case "screenshot1":
+                        (Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setScreenshot1(pb.Image);
+                        break;
+                    case "screenshot2":
+                        (Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setScreenshot2(pb.Image);
+                        break;
+                    case "screenshot3":
+                        (Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setScreenshot3(pb.Image);
+                        break;
+                    default:
+                        (Application.OpenForms["AppEntryDetailsForm"] as AppEntryDetailsForm).setImage1(pb.Image);
+                        break;
+                }
+
+                (Application.OpenForms["SearchWindow"] as SearchWindow).Close();
                 this.Close();
             }
 
